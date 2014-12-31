@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="satsang:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Satsang.war">
+      <element id="artifact" artifact-name="satsang:war exploded" />
+    </root>
+  </artifact>
+</component>
