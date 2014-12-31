@@ -24,9 +24,9 @@ class PersistenceContext {
     public DataSource dataSource() {
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSourceConfig.setJdbcUrl("jdbc:mysql://localhost:3306/Satsang");
-        dataSourceConfig.setUsername("root");
-        dataSourceConfig.setPassword("jaySwaminarayan");
+        dataSourceConfig.setJdbcUrl("mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/Satsang");
+        dataSourceConfig.setUsername("adminxchDkRN");
+        dataSourceConfig.setPassword("MTHxddFLCTDJ");
 
         return new HikariDataSource(dataSourceConfig);
     }
