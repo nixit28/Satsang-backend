@@ -15,7 +15,7 @@ public class PageController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String root(Model model) {
         model.addAttribute("message", "Hello");
-        return "home";
+        return "hello";
     }
 
 }
