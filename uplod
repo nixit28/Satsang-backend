@@ -1,0 +1,9 @@
+#!/bin/bash
+# My first script
+
+rm ~/Satsang/webapps/Satsang.war
+cp /home/nixit/Java/Project/Satsang/target/Satsang.war ~/Satsang/webapps/
+git add --all .
+git commit -m "Change"
+git push
+
