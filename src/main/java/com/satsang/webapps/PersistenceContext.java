@@ -17,12 +17,11 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 class PersistenceContext {
 
-    @Bean(destroyMethod = "close")
+    /*@Bean(destroyMethod = "close")
     public DataSource dataSource() {
 
         BasicDataSource dataSourceConfig = new BasicDataSource();
         dataSourceConfig.setDriverClassName("com.mysql.jdbc.Driver");
-//        dataSourceConfig.setJdbcUrl("jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}");
         dataSourceConfig.setUrl("jdbc:mysql://" + System.getenv("OPENSHIFT_MYSQL_DB_HOST") + ":" + System.getenv("OPENSHIFT_MYSQL_DB_PORT") + "/" + System.getenv("OPENSHIFT_APP_NAME"));
         dataSourceConfig.setUsername(System.getenv("OPENSHIFT_MYSQL_DB_USERNAME"));
         dataSourceConfig.setPassword(System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD"));
@@ -35,19 +34,19 @@ class PersistenceContext {
         dataSourceConfig.setValidationQuery("SELECT version()");
 
         return dataSourceConfig;
-//        return new HikariDataSource(dataSourceConfig);
-    }
+    }*/
+
 //Admin: adminxchDkRN
 //Password: MTHxddFLCTDJ
-    /*public DataSource dataSource() {
-        HikariConfig dataSourceConfig = new HikariConfig();
+    public DataSource dataSource() {
+        BasicDataSource dataSourceConfig = new BasicDataSource();
         dataSourceConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSourceConfig.setJdbcUrl("jdbc:mysql://localhost:3306/Satsang");
-        dataSourceConfig.setUsername("root");
-        dataSourceConfig.setPassword("jaySwaminarayan");
+        dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/satsang");
+        dataSourceConfig.setUsername("adminxchDkRN");
+        dataSourceConfig.setPassword("MTHxddFLCTDJ");
 
-        return new HikariDataSource(dataSourceConfig);
-    }*/
+        return dataSourceConfig;
+    }
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {

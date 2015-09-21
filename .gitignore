@@ -14,7 +14,6 @@ derby.log
 spring-test/test-output/
 .gradle
 argfile*
-pom.xml
 activemq-data/
 
 /build
@@ -22,7 +21,6 @@ buildSrc/build
 /spring-*/build
 /src/asciidoc/build
 target/
-
 # Eclipse artifacts, including WTP generated manifests
 .classpath
 .project
@@ -40,38 +38,7 @@ atlassian-ide-plugin.xml
 
 ## Directory-based project format:
 .idea/
-# if you remove the above rule, at least ignore the following:
+.openshift
+ .idea/gradle.xml
+ .idea/libraries
 
-# User-specific stuff:
-# .idea/workspace.xml
-# .idea/tasks.xml
-# .idea/dictionaries
-
-# Sensitive or high-churn files:
-# .idea/dataSources.ids
-# .idea/dataSources.xml
-# .idea/sqlDataSources.xml
-# .idea/dynamic.xml
-# .idea/uiDesigner.xml
-
-# Gradle:
-# .idea/gradle.xml
-# .idea/libraries
-
-# Mongo Explorer plugin:
-# .idea/mongoSettings.xml
-
-## Plugin-specific files:
-
-# IntelliJ
-/out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties

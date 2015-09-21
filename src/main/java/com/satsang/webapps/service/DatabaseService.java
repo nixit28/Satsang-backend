@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface DatabaseService<T> {
 
-    public Message create(T object, BindingResult result);
-    public List<T> listAll();
-    public Message update(T object, BindingResult result);
-    public Message delete(int id);
-    public T get(int id);
+    Message create(T object, BindingResult result);
+    List<T> listAll();
+    Message update(T object, BindingResult result);
+    Message delete(int id);
+    T get(int id);
 }

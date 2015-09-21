@@ -10,6 +10,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OratorRepository extends JpaRepository<Orator, Integer> {
 
-    public Orator findByName(String name);
+    Orator findByName(String name);
 
 }

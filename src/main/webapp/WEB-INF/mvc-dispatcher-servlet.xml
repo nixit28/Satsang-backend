@@ -32,6 +32,10 @@
 
     <bean id="quoteRestController" class="com.satsang.webapps.controller.QuoteRestController" autowire="byName" />
 
+    <bean id="playlistDBService" class="com.satsang.webapps.service.PlaylistDatabaseServiceImpl"/>
+
+    <bean id="playlistRestController" class="com.satsang.webapps.controller.PlaylistRestController" autowire="byName" />
+
 
     <!-- Configure to plugin JSON as request and response in method handler -->
 <!--

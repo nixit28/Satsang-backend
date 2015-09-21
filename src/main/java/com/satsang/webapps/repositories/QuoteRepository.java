@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public interface QuoteRepository extends JpaRepository<Quote, Integer> {
-    public Quote findByDatePublish(Date date);
-    public List<Quote> findByDatePublishGreaterThanEqual(Date date);
-    public List<Quote> findByDatePublishLessThan(Date date);
+    Quote findByDatePublish(Date date);
+    List<Quote> findByDatePublishGreaterThanEqual(Date date);
+    List<Quote> findByDatePublishLessThan(Date date);
 }
