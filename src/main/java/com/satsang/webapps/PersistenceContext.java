@@ -41,15 +41,14 @@ class PersistenceContext {
     public DataSource dataSource() {
         BasicDataSource dataSourceConfig = new BasicDataSource();
         dataSourceConfig.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/satsang");
+        dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/satsang?characterEncoding=UTF-8");
         dataSourceConfig.setUsername("adminxchDkRN");
         dataSourceConfig.setPassword("MTHxddFLCTDJ");
-
         return dataSourceConfig;
     }
 
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
+    public EntityManagerFactory entityManagerFactory()  {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);

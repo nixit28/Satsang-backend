@@ -47,7 +47,7 @@ public class Category {
 
     @Override
     public int hashCode() {
-        int result = idCategory;
+        int result = idCategory == null ? 0 : idCategory;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }

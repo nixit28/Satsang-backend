@@ -1,4 +1,4 @@
-package com.satsang.webapps.controller;
+package com.satsang.webapps.controller.rest;
 
 import com.satsang.webapps.Message;
 import com.satsang.webapps.entity.Playlist;

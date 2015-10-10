@@ -1,0 +1,78 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: nixit
+  Date: 9/25/15
+  Time: 4:30 PM
+  To change this template use File | Settings | File Templates. -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Satsang - Playlist</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<script>
+    function deleteCategory(url){
+        console.log(url);
+        $.ajax({url: "/category/"+url,
+            type: 'DELETE',
+            async: false,
+            success: function(result) {
+                // Do something with the result
+                window.location = '/category';
+            }
+        });
+    };
+</script>
+<div class="container">
+    <div class="jumbotron">
+        <h1 th:text="${title}"></h1>
+
+        <p>Create Tracks</p>
+    </div>
+
+    <div th:if="${message}!=null">
+        <div th:if="${message.isSuccess()}">
+            <div class="alert alert-success">
+                <strong>Success!</strong> <span th:text="${message.getMessage()}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Category List</div>
+        <div class="panel-body">
+            <div th:if="${categories}!=null">
+                <ul class="list-group" id="categoriesList">
+                    <li th:each="item : ${categories}" class="list-group-item">
+                        <div th:text="${item.name}"></div>
+                        <a href="#" th:onclick="'deleteCategory(\'' + ${item.idCategory} + '\');'">Delete</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Create Tracks</div>
+        <div class="panel-body">
+            <form role="form" action="#" th:action="@{/category/create}" th:object="${newCategory}" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Vairagya"/>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

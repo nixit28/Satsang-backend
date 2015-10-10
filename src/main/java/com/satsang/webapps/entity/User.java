@@ -4,6 +4,7 @@ package com.satsang.webapps.entity;
  * Created by nixit on 7/28/15.
  */
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class User {
     private Integer idUser;
 
     @NotEmpty
+    @Email
     private String userName;
 
     @NotEmpty
@@ -54,7 +56,7 @@ public class User {
         this.password = password;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Playlist_User", joinColumns = { @JoinColumn(name = "id_user") },
             inverseJoinColumns = { @JoinColumn(name = "id_playlist") })
     public List<Playlist> getPlaylist() {

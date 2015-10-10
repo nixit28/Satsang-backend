@@ -1,55 +1,86 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:beans="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- Enables the Spring MVC @Controller programming model -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
     <context:component-scan base-package="com.satsang.webapps"/>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <mvc:resources mapping="/resources/**" location="/resources/"
+                   cache-period="31556926"/>
+
+
+    <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/WEB-INF/pages/"/>
+            <property name="suffix" value=".jsp"/>
+        </bean>-->
+
+    <bean id="templateResolver"
+          class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="suffix" value=".html"/>
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="templateMode" value="HTML5"/>
+    </bean>
+
+    <bean id="templateEngine"
+          class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+    </bean>
+
+    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="templateEngine" ref="templateEngine"/>
     </bean>
 
     <bean id="oratorDBService" class="com.satsang.webapps.service.OratorDatabaseServiceImpl"/>
 
-    <bean id="oratorRestController" class="com.satsang.webapps.controller.OratorRestController" autowire="byName" />
+    <bean id="oratorRestController" class="com.satsang.webapps.controller.rest.OratorRestController" autowire="byName"/>
 
     <bean id="categoryDBService" class="com.satsang.webapps.service.CategoryDatabaseServiceImpl"/>
 
-    <bean id="categoryRestController" class="com.satsang.webapps.controller.CategoryRestController" autowire="byName" />
+    <bean id="categoryRestController" class="com.satsang.webapps.controller.rest.CategoryRestController"
+          autowire="byName"/>
 
     <bean id="granthDBService" class="com.satsang.webapps.service.GranthDatabaseServiceImpl"/>
 
-    <bean id="granthRestController" class="com.satsang.webapps.controller.GranthRestController" autowire="byName" />
+    <bean id="granthRestController" class="com.satsang.webapps.controller.rest.GranthRestController" autowire="byName"/>
 
     <bean id="quoteDBService" class="com.satsang.webapps.service.QuoteDatabaseServiceImpl"/>
 
-    <bean id="quoteRestController" class="com.satsang.webapps.controller.QuoteRestController" autowire="byName" />
+    <bean id="quoteRestController" class="com.satsang.webapps.controller.rest.QuoteRestController" autowire="byName"/>
 
     <bean id="playlistDBService" class="com.satsang.webapps.service.PlaylistDatabaseServiceImpl"/>
 
-    <bean id="playlistRestController" class="com.satsang.webapps.controller.PlaylistRestController" autowire="byName" />
+    <bean id="playlistRestController" class="com.satsang.webapps.controller.rest.PlaylistRestController"
+          autowire="byName"/>
+
+    <bean id="trackDBService" class="com.satsang.webapps.service.TrackDatabaseServiceImpl"/>
+
+    <bean id="trackRestController" class="com.satsang.webapps.controller.rest.TrackRestController" autowire="byName"/>
 
 
     <!-- Configure to plugin JSON as request and response in method handler -->
-<!--
-    <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <beans:property name="messageConverters">
-            <beans:list>
-                <beans:ref bean="jsonMessageConverter"/>
-            </beans:list>
-        </beans:property>
-    </beans:bean>
+    <!--
+        <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+            <beans:property name="messageConverters">
+                <beans:list>
+                    <beans:ref bean="jsonMessageConverter"/>
+                </beans:list>
+            </beans:property>
+        </beans:bean>
 
-    &lt;!&ndash; Configure bean to convert JSON to POJO and vice versa &ndash;&gt;
-    <beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-    </beans:bean>
--->
+        &lt;!&ndash; Configure bean to convert JSON to POJO and vice versa &ndash;&gt;
+        <beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        </beans:bean>
+    -->
 
 </beans>

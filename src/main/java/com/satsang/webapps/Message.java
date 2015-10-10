@@ -8,11 +8,12 @@ import java.util.List;
  * Created by nixit on 12/22/14.
  */
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Message {
+public class Message<T> {
     Integer id;
     private boolean success;
     private List<String> errors;
     private String message;
+    private T object;
 
     public Message(String message, boolean success) {
         this.message = message;
@@ -49,5 +50,13 @@ public class Message {
 
     public void setErrors(List<String> errors) {
         this.errors = errors;
+    }
+
+    public T getObject() {
+        return object;
+    }
+
+    public void setObject(T object) {
+        this.object = object;
     }
 }

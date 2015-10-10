@@ -1,7 +1,6 @@
-package com.satsang.webapps.controller;
+package com.satsang.webapps.controller.rest;
 
 import com.satsang.webapps.Message;
-import com.satsang.webapps.entity.Category;
 import com.satsang.webapps.entity.Category;
 import com.satsang.webapps.service.DatabaseService;
 import org.slf4j.Logger;
